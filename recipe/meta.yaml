@@ -21,6 +21,7 @@ requirements:
     - python
     - ninja
     - pip
+    - setuptools
     - pybind11
     - eigen
     - cmake
