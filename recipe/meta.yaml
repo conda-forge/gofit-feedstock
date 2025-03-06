@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gofit-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/gofit-{{ version }}.tar.gz
   sha256: ab5b578e641db5fe590627d0165abac67eaae9cc5a1451d3d6aceb3a2635e136
 
 build:
@@ -15,6 +15,11 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - pybind11                               # [build_platform != target_platform]
+    - cmake
+    - make
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
   host:
@@ -24,8 +29,6 @@ requirements:
     - setuptools
     - pybind11
     - eigen
-    - cmake
-    - make
   run:
     - python
 
