@@ -38,6 +38,7 @@ test:
   requires:
     - pip
     - numpy
+    - pybind11
   imports:
     - gofit
   commands:
